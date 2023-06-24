@@ -591,7 +591,7 @@ android-aar()
     check_submodules
     ARTIFACT="android"
     BUILD_TYPE=${1:-release} # Default to release
-    CMAKE_SWITCH="ZTS_ENABLE_JAVA"
+    #CMAKE_SWITCH="ZTS_ENABLE_JAVA"
     TARGET_PLATFORM="android"
     TARGET_MACHINE_TYPE=any
     CACHE_DIR=$BUILD_CACHE_DIR/$TARGET_PLATFORM-$TARGET_MACHINE_TYPE-$ARTIFACT-$BUILD_TYPE
@@ -600,7 +600,7 @@ android-aar()
     mkdir -p $PKG_OUTPUT_DIR
     # Build
     UPPERCASE_BUILD_TYPE="$(tr '[:lower:]' '[:upper:]' <<< ${BUILD_TYPE:0:1})${BUILD_TYPE:1}"
-    CMAKE_FLAGS="-D${CMAKE_SWITCH}=1 -D${CMAKE_SWITCH}=ON"
+    #CMAKE_FLAGS="-D${CMAKE_SWITCH}=1 -D${CMAKE_SWITCH}=ON"
     cd $ANDROID_PKG_PROJ_DIR
     ./gradlew $GRADLE_ARGS assemble$UPPERCASE_BUILD_TYPE # assembleRelease / assembleDebug
     cp $ANDROID_PKG_PROJ_DIR/app/build/outputs/aar/*.aar \
