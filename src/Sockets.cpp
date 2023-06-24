@@ -431,8 +431,6 @@ int zts_connect(int fd, const char* ipstr, unsigned short port, int timeout_ms)
                 zts_util_delay(connect_delay);
                 n_tries--;
             } while ((err < 0) && (zts_errno != 0) && (n_tries > 0));
-        } else {
-            err = zts_bsd_connect(fd, sa, addrlen);
         }
         return err;
     }
